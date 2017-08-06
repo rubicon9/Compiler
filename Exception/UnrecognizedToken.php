@@ -52,7 +52,7 @@ class UnrecognizedToken extends Exception
      * @var int
      */
     protected $column = 0;
-
+    protected $args;
 
 
     /**
@@ -68,8 +68,9 @@ class UnrecognizedToken extends Exception
     {
         parent::__construct($message, $code, $arg);
 
-        $this->line   = $line;
-        $this->column = $column;
+        $this->line    = $line;
+        $this->column  = $column;
+        $this->args    = $arg;
 
         return;
     }
@@ -82,5 +83,15 @@ class UnrecognizedToken extends Exception
     public function getColumn()
     {
         return $this->column;
+    }
+
+    /**
+     * Get args
+     *
+     * @return array
+     */
+    public function getToken()
+    {
+        return $this->args[0];
     }
 }
